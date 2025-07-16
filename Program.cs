@@ -147,4 +147,7 @@ app.UseStaticFiles(new StaticFileOptions
 // Controllers
 app.MapControllers();
 
+Console.WriteLine("✅ App is starting...");
+
 app.Run();
+
