@@ -1,7 +1,6 @@
 using BrochureAPI.Data;
 using BrochureAPI.Filters;
 using BrochureAPI.Interfaces;
-using BrochureAPI.Middleware;
 using BrochureAPI.Models;
 using BrochureAPI.Services;
 using Microsoft.AspNetCore.StaticFiles;
@@ -128,14 +127,14 @@ if (app.Environment.IsDevelopment())
 // CORS
 app.UseCors("AllowAll");
 
-// Middleware for JWT in cookies
-app.UseJwtCookieMiddleware();
+// ❌ Commenting for now (causing 500 error)
+// app.UseJwtCookieMiddleware(); 
 
-// Authentication & Authorization
+// Auth
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Serve static files
+// Static files
 app.UseStaticFiles(new StaticFileOptions
 {
     OnPrepareResponse = ctx =>
@@ -145,8 +144,7 @@ app.UseStaticFiles(new StaticFileOptions
     }
 });
 
-// Map routes
+// Controllers
 app.MapControllers();
 
-// Run the app
 app.Run();
